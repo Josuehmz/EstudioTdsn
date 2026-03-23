@@ -15,8 +15,20 @@ public class ProxyController {
         passiveServer = (s2 != null) ? s2 : "http://localhost:8082";
     }
     @GetMapping("/proxy/sum")
-    public String sum (@RequestParam ("a") int a, @RequestParam ("b") int b){
+    public String sum(@RequestParam("a") int a, @RequestParam("b") int b){
         return delegate("/api/sum?a=" + a + "&b=" + b);
+    }
+    @GetMapping("/proxy/sub")
+    public String sub(@RequestParam("a") int a, @RequestParam("b") int b){
+        return delegate("/api/sub?a=" + a + "&b=" + b);
+    }
+    @GetMapping("/proxy/mul")
+    public String mul(@RequestParam("a") int a, @RequestParam("b") int b){
+        return delegate("/api/multiply?a=" + a + "&b=" + b);
+    }
+    @GetMapping("/proxy/div")
+    public String div(@RequestParam("a") int a, @RequestParam("b") int b){
+        return delegate("/api/divide?a=" + a + "&b=" + b);
     }
     private String delegate(String path){
         try {
@@ -30,7 +42,7 @@ public class ProxyController {
                 return res;
             } catch (IOException ex){
                 return "Error: ambos servicios caidos";
+            }
         }
-     }
-  }
+    }
 }
