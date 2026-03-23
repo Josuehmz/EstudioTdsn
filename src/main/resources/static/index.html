@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Math Services</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>Math Services</h1>
+        <form action="/api/sum" method="get">
+            <label for="a">A:</label>
+            <input type="number" id="a" name="a" required>
+            <label for="b">B:</label>
+            <input type="number" id="b" name="b" required>
+            <button type="submit">Sum</button>
+        </form>
+        <form action="/api/multiply" method="get">
+            <label for="a">A:</label>
+            <input type="number" id="a" name="a" required>
+            <label for="b">B:</label>
+            <input type="number" id="b" name="b" required>
+            <button type="submit">Multiply</button>
+        </form>
+        <form action="/api/sub" method="get">
+            <label for="a">A:</label>
+            <input type="number" id="a" name="a" required>
+            <label for="b">B:</label>
+            <input type="number" id="b" name="b" required>
+            <button type="submit">Sub</button>
+        </form>
+        <form action="/api/divide" method="get">
+            <label for="a">A:</label>
+            <input type="number" id="a" name="a" required>
+            <label for="b">B:</label>
+            <input type="number" id="b" name="b" required>
+            <button type="submit">Divide</button>
+        </form>
+    <script>
+        function calc(op){
+            var a = document.getElementById(op + "A").value;
+            var b = document.getElementById(op + "B").value;
+            var xhttp = new XMLHttpRequest();
+            xhttp.onload = function(){
+                document.getElementById(op + "Result").innerHTML = this.responseText;
+        };
+        xhttp.open("GET", "/api/" + op + "?a=" + a + "&b=" + b, true);
+        xhttp.send();
+    }
+    </script>
+    </body>
+</html>
