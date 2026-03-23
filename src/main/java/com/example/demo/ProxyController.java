@@ -16,7 +16,7 @@ public class ProxyController {
     }
     @GetMapping("/proxy/sum")
     public String sum (@RequestParam ("a") int a, @RequestParam ("b") int b){
-        return delegate("/proxy/sum?a=" + a + "&b=" + b);
+        return delegate("/api/sum?a=" + a + "&b=" + b);
     }
     private String delegate(String path){
         try {
